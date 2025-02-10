@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>--->>Magda Arques<<---</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
+        ul li{
+            list-style-type: none;
+            line-height: 2.2rem;
+        }
+        ul li a{
+            color: white;
+            background-color: blue;
+            padding: .1rem .2rem;
+            font-size: 2rem;
+        }
+        ul li a:hover{
+            color:white;
+            background-color: black;
+        }
+        body{
+            font-family: 'Xanh Mono', monospace;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        /*LOGO*/
+        header{
+            z-index: 40;
+            position: fixed;
+            width: 100%;
+            display: flex;
+            text-align: center;
+            align-content: center;
+            justify-content: right;
+            font-size: 1.6em;
+        }
+        header hgroup:last-child{
+            padding: 0 2em 0 0;
+        }
+        a>header{
+            color: black;
+        }
+        #nom{
+            z-index: 41;
+            padding: 1.5em 0 0 0;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-style: italic;
+            color: color;
+            padding: .2em .2em;
+            float: left;
+        }
+       /*MENU*/
+        form{
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: .2em;
+            padding: 1em;
+            z-index: 42;
+
+        }
+        form select{
+            border: none;
+            overflow: hidden;
+            background: white;
+            /* border:none; */
+            font-family: 'Fragment Mono', monospace;    
+            font-size: 1em;
+            letter-spacing: .08em;
+            width: 18em;
+            height: auto;
+            position: absolute;
+        }
+        
+        /* #intro{
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+        }
+        #intro img{
+            width: 30vw;
+            height: auto;
+        } */
+        .wrap{
+            position: relative;
+            bottom: 0;
+            right: 0;
+            top:0;
+            left: 25vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 75vw;
+            padding: 1em;
+            background-color: white;
+            z-index: 10;
+        }
+        /* .wrap, .hola{
+            background-color: red;
+        } */
+        .hola:hover{
+            background-color: none;
+        }
+        /* #texxt{
+           
+
+       } */
+        .wrap h2{
+            padding: 2em 0 .8em 0;
+            width: 50vw;
+            z-index: 18;
+            font-size: 4em;
+            font-family: 'Xanh Mono', monospace;
+        }
+        .wrap h3{
+            font-size: 1.5em;
+        }
+        .project{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            align-items: left;
+            justify-content: left;
+        }
+        .wrap p{
+            width: 50vw;
+            font-size: 1.1rem;
+            padding: 0 0 1.2rem 0;
+            font-family: 'Fragment Mono', monospace;  
+        }
+        .hola p:first-child{
+            /* text-indent: 4em; */
+            margin-top: -2em;
+            float: left;
+		}        
+        .hola #about_pc:first-child{
+            text-indent: 18vw;
+        }
+        .hola #about_pe:first-child{
+            text-indent: 10vw;
+        }
+        .hola #about_pcast:first-child{
+            text-indent: 18.5vw;
+        } 
+        .hola p a{
+            padding: .1em;
+            background-color: blue;
+            color: white;
+        }
+        .hola p a:hover{
+            padding: .1em;
+            background-color: black;
+            color: white;
+        }
+        footer{
+            padding: 3em 0 0 0;
+        }
+        footer p{
+            float: left;
+            text-indent: 0;
+            font-family: 'Xanh Mono', monospace;
+            font-weight: 400;
+            font-style: italic;
+        }
+        section{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        section h4{
+            width: 33%;
+            padding: 0 0 2em 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        
+        .col_3 .cat, .col_3 .cast, .col_3 .eng{
+            font-family: 'Fragment Mono', monospace; 
+        }
+        section{
+            display: flex;
+            flex-basis: 100%;
+            width: 100%;
+        }
+        section>div{
+            padding: 2em 1em .5em 0;
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .col_3 p{
+            inline-size: 100%;
+            font-size: 1em;
+            /* overflow-wrap: break-word;
+            white-space: wrap;
+            text-overflow: ellipsis; */
+            word-break: break-word;
+        }
+        
+        .col_3 p a{
+            color: white;
+            background-color: blue;
+        }
+        .col_3 p a:hover{
+            color: white;
+            background-color: black;
+        }
+        /*CANVAS BACKGROUND*/
+         #myVideo{
+            z-index: 2;
+            position: relative;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            min-height: 100%;
+        }
+        
+        figure, video{
+            width: 100%;
+            height: auto;
+            position:relative;
+            z-index: -10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        figure{
+            margin: 2em 0 2em 0;
+        }
+        canvas , #myCanvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #bg_img_alt , #bg_img_ample{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        #bg_img_alt{
+            max-width: 100%;
+            display: flex;
+        }
+        #bg_img_ample img{  
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+        #bg_img_alt img{
+            width: 32vw;
+            height: auto;
+            overflow: hidden;
+        }
+        @media only screen and (max-width: 1280px) {
+            /*LOGO*/
+            header{
+                padding: 0;
+                margin: 0;
+                background-color: none;
+                width: 100%;
+                justify-content: right;
+            }
+            header hgroup{
+                color: black;
+            }
+            /*MENU*/
+            form{
+                display: flex;
+                overflow: none;
+            }
+            #mySelect{
+                width: 100%;
+                justify-content: center;
+                position: relative;    
+                overflow: none;
+            }
+            /*GENERAL*/
+            #texxt{
+                margin: 10em 0 0 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .wrap {
+                width: 90%;
+                left: 0;
+                right: 0;
+                padding-top: 1em;
+                background-color: black;
+            }
+            .project{
+                margin: 0 2em 0 0;
+                padding: 2em 0 .6em 0;
+                color: white;
+                width: 100%;
+            }
+            .wrap h2{
+                width: 100%;
+                color: white;
+            }
+            .wrap h3{
+                color: white;
+            }
+            #about_pc p, #about_pe p, #about_pcast p{
+                color: white;
+            }
+            .hola p{
+                color: white;
+            }
+            ul li{
+                color: black;
+            }
+            #bg_img_alt img, #bg_img_ample img{
+                width: 100%;
+                object-fit: cover;
+                height: auto;
+                overflow: hidden;
+            }
+	    section{
+            	display: flex;
+            	flex-direction: column; 
+            	padding: 0 .5em;
+            }
+            .col_3 p, .col_3 h4{
+                color: white;
+            }
+        }
+        @media only screen and (max-width: 900px) {
+            header{
+                right: 0;
+                top: 0;
+                flex-direction: column;
+                align-items: flex-end;
+                display: flex;
+                text-align: center;
+                justify-content: right;
+                font-size: 1.4em;
+            }
+            hgroup{
+                width: 150px;
+            }
+            header hgroup:last-child{
+                padding: 0 .1em 0 0;
+            }
+            #texxt{
+                margin: 0;
+                padding: 0;
+            }
+            .project{
+                padding: 2em 0 .6em 0;
+                font-size: 3.5em;
+                color: black;
+            }
+            .wrap{
+                width: 90%;
+                margin: 9em 0 0 0;
+                background-color: transparent;
+            }
+            .wrap h2, .wrap h3{
+                color: black;
+            }
+            #texxt footer p{
+                width: 100%;
+                color: black;
+            }
+            #about_pc p, #about_pe p, #about_pcast p{
+                width: 100%;
+                color: black;
+            }
+            .col_3{
+                background-color: white;
+            }
+
+            .col_3 p, .col_3 h4{
+                width: 100%;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <a href="index.html">
+            <header onclick="fons()">
+                <hgroup id="nom">
+                    <h1>M</h1>
+                    <h2>a</h2>
+                    <h3>g</h3>
+                    <h4>d</h4>
+                    <h5>a</h5>
+                </hgroup>
+                <hgroup id="cognom">
+                    <h1>A</h1>
+                    <h2>r</h2>
+                    <h3>q</h3>
+                    <h4>u</h4>
+                    <h5>e</h5>
+                    <h6>s</h6>
+                </hgroup>
+            </header></a>
+        <form>
+            <select id="mySelect" onchange="myFunction(this)" size="12">
+                <optgroup label="---">
+                    <option value="0">sequence 01071</option>
+                    <option value="1">flipbook</option>
+                    <option value="2">fps</option>
+                    <option value="3">animation</option>
+                    <option value="4">code</option>
+                </optgroup>
+            </select>
+        </form>
+        <div id="texxt">
+            
+        </div>
+    </div>
+    <!-- <figure id='intro'><img src='img/jo_3.jpg' alt=''></figure> -->
+    <script>
+        document.body.onload = function() {myFunction2()};
+         function myFunction2() {
+             document.getElementById('texxt').innerHTML = "<canvas id='myCanvas'></canvas>";
+         }
+        function myFunction(el) {
+            var info = [
+                "<div class='wrap'><h2>sequence 01071</h2><div id='about_pc'><p>It is a queer work of printing, made by a code visualist and a publisher and risograph printer.</p><p>We want to embrace the movement and silence that is experienced in space and the limits and restrictions of code and paper.</p><p>It is an animation made using hydra code and risograph printing. We are creating a series of sequences around the code, between the visibility and transparency of the image. We love to embrace the relationship among the materiality and the code through the flipbook.</p><p>We like to think about taking the proposal to the limit of restrictions. The use of images generated with a coding language based on synthesizers and the risograph image and reinterpretation of digital and printed synthesis.</p></div></div>",                    // option 0
+                "<div class='wrap'><h2>flipbook</h2><div id='about_pe'><figure id='bg_img_ample'><img src='img/flipbook/fb_0.JPG'></figure><figure id='bg_img_ample'><img src='img/flipbook/fb_1.JPG'></figure><figure id='bg_img_ample'><img src='img/flipbook/fb_2.JPG'></figure><figure id='bg_img_ample'><img src='img/flipbook/fb_3.JPG'></figure></div>",                                                            // option 1
+                "<div class='wrap'><h2>fps</h2><div id='about_pcast'><figure id='bg_img_ample'><img src='img/fps/1.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/2.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/3.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/4.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/5.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/6.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/7.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/8.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/9.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/10.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/11.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/12.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/13.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/14.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/15.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/16.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/17.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/18.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/19.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/20.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/21.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/22.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/23.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/24.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/25.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/26.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/27.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/28.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/29.JPG'></figure><figure id='bg_img_ample'><img src='img/fps/30.JPG'></figure></div>",                        // option 2
+                "<div class='wrap'><h2 class='project'>animation</h2><figure' id='bg_img_ample'><img src='img/animation/ani_sequence_01071.GIF'></figure></div>",          // option 3
+                "<div class='wrap'><h2>code<h2><ul><li><a href='https://hydra.ojack.xyz/?sketch_id=C9ozACllXTBl2cMV'>hydra_code</li><li><a href='https://www.instagram.com/magdaarques/'>[at]magdaarques</a></li><li><a href='https://niceguypress.com/'>Nice Guy Press - print risography studio </a></li></ul><footer><p>Made by @magdaarques with html, css, javascript and hydra in sublimetxt and host in github <3</p></footer></div>",               // option 4
+            ];
+            var val = el.options[el.selectedIndex].value;
+            document.getElementById('texxt').innerHTML = info[val];
+        }
+        changeInfo(document.getElementById('mySelect'));
+    </script>
+    
+         <script>
+        // create a new hydra-synth instance
+        speed = .5
+        var hydra = new Hydra({
+        canvas: document.getElementById("myCanvas"),
+        detectAudio: false
+      })
+      // licensed with CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+//Feedback shape,voroni,solid
+//@magdaarques
+//shape(2=quadrilater, 3=triangle, 4=rectangle, 999=cercle)
+shape([2,3,4,999]).out(o0)
+//voronoi(size,velocity,gradient)
+voronoi(10,2,.02).color(1,0,-1).out(o1)
+//solid(r,g,b)
+solid([1,0,0],[0,1,0],[0,0,1]).out(o2)
+//here the feedback calling the same output
+src(o3)
+.layer(src(o2).diff(o0,.9))
+  .modulate(osc(40,.04,2),0.005).diff(src(o3),.9)
+  .modulateScale(src(o1),0.01,1.01)
+  .out(o3)
+render(o3)
+    </script>     
+</body>
+</html>
